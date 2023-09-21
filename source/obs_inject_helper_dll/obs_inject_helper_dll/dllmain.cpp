@@ -1,9 +1,11 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
 
 #define WIN32_LEAN_AND_MEAN
+#define WIN32_NO_STATUS
 #define NOMINMAX
 #include <Windows.h>
-#include <stdio.h>
+#include <winternl.h>
 
 /*
 
@@ -29,17 +31,24 @@ if (GetModuleFileName((HMODULE)&__ImageBase, sz, RTL_NUMBER_OF(sz)))
 //    return 0;
 //}
 
+typedef NTSTATUS(NTAPI* __LdrAddRefDll)(_In_ ULONG Flags, _In_ PVOID DllHandle);
+HMODULE g_hModule;
+
 DWORD WINAPI Function(LPVOID lpParameter)
 {
     AllocConsole();
     freopen("CONOUT$", "w", stdout);
+
+    printf("%p\n", g_hModule);
+
+    __LdrAddRefDll _LdrAddRefDll = (__LdrAddRefDll)GetProcAddress(GetModuleHandle(TEXT("ntdll.dll")), "LdrAddRefDll");
+    _LdrAddRefDll(0, g_hModule);
+
     printf("Function\n");
     return 0;
 }
 
-
-extern "C"
-__declspec(dllexport) LRESULT CALLBACK dummy_debug_proc(int code, WPARAM wparam, LPARAM lparam)
+extern "C" __declspec(dllexport) LRESULT CALLBACK dummy_debug_proc(int code, WPARAM wparam, LPARAM lparam)
 {
     static BOOL hooking = TRUE;
     MSG* msg = (MSG*)lparam;
@@ -63,6 +72,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
         //if (hThread != NULL) {
         //    CloseHandle(hThread);
         //}
+        g_hModule = hModule;
     } break;
     case DLL_THREAD_ATTACH: {
     } break;
