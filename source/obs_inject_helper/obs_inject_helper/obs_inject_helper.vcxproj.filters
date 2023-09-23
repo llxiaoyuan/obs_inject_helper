@@ -18,24 +18,24 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="my_print.c">
+    <ClCompile Include="my_sprint_alloc.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="my_print_alloc.cpp">
+    <ClCompile Include="AllocFree.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="AllocFree.cpp">
+    <ClCompile Include="my_sprint.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="my_print.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="my_print_alloc.h">
+    <ClInclude Include="my_sprint_alloc.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="AllocFree.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="my_sprint.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

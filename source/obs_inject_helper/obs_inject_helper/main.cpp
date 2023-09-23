@@ -1,7 +1,7 @@
 ﻿#include <iostream>
-#include "my_print.h"
+#include "my_sprint.h"
+#include "my_sprint_alloc.h"
 #include "AllocFree.h"
-#include "my_print_alloc.h"
 
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX

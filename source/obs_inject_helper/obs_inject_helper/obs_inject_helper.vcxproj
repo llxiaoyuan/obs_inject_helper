@@ -131,15 +131,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AllocFree.cpp" />
-    <ClCompile Include="my_print.c" />
+    <ClCompile Include="AllocFree.c" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="my_print_alloc.cpp" />
+    <ClCompile Include="my_sprint_alloc.c" />
+    <ClCompile Include="my_sprint.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AllocFree.h" />
-    <ClInclude Include="my_print.h" />
-    <ClInclude Include="my_print_alloc.h" />
+    <ClInclude Include="my_sprint_alloc.h" />
+    <ClInclude Include="my_sprint.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
